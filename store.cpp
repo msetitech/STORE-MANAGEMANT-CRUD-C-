@@ -16,3 +16,9 @@ struct items {
     }
 
 };
+
+void createItem(vector<item>& items);
+void readItem(vector<item>& items);
+void updateItem(vector<item>& items);
+void removeItem(vector<item>& items);
+
