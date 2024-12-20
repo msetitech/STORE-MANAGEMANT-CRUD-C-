@@ -4,7 +4,7 @@
 
 using namespace std;
 
-struct items {
+struct item {
     string name;
     float price;
     int id;
@@ -55,8 +55,22 @@ int main(){
         default:
             cout << "Invalid Choice Try again (enter 1 - 5):";
             break;
-        
-    }while (choice != 5);
+        }
 
+    } while (choice != 5);
     return 0;
+}
+
+void createItem(vector<item>& items){
+    item newItem;
+    cout << "Enter item ID: ";
+    cin >> newItem.id;
+    cin.ignore();
+    cout << "Enter Item Name: ";
+    getline(cin, newItem.name);
+    cout << "Enter the Price: ";
+    cin >> newItem.price;
+
+    items.push_back(newItem);
+    cout << "item Created Successfully";
 }
