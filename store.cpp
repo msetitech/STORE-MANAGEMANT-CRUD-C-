@@ -4,26 +4,27 @@
 
 using namespace std;
 
-struct item {
+struct Item {
     string name;
     float price;
     int id;
 
     // display function
+
     void displayProducts(){
         cout << "\n---- ITEM MANAGEMENT SYSTEM ----\n";
-        cout << "Product ID: " << id << ", Product Name: " << name << "Product Price: " << price << endl;
+        cout << "Product ID: " << id << ", Product Name: " << name << ", Product Price: $" << price <<endl;
     }
 
 };
 
-void createItem(vector<item>& items);
-void readItem(vector<item>& items);
-void updateItem(vector<item>& items);
-void removeItem(vector<item>& items);
+void createItem(vector<Item>& items);
+void readItem(const vector<Item>& items);
+void updateItem(vector<Item>& items);
+void removeItem(vector<Item>& items);
 
 int main(){
-    vector<item> items;
+    vector<Item> items;
     int choice;
     do{
         //Display all menu
@@ -39,16 +40,16 @@ int main(){
         switch (choice)
         {
         case 1:
-            createItem();
+            createItem(items);
             break;
         case 2:
-            readItem();
+            readItem(items);
             break;
         case 3:
-            updateItem();
+            updateItem(items);
             break;
         case 4:
-            removeItem();
+            removeItem(items);
             break;
         case 5:
             cout << "Exiting ........" << endl;
@@ -61,8 +62,8 @@ int main(){
     return 0;
 }
 
-void createItem(vector<item>& items){
-    item newItem;
+void createItem(vector<Item>& items){
+    Item newItem;
     cout << "Enter item ID: ";
     cin >> newItem.id;
     cin.ignore();
@@ -73,4 +74,15 @@ void createItem(vector<item>& items){
 
     items.push_back(newItem);
     cout << "item Created Successfully";
+}
+
+void readItem(const vector<Item>& items) {
+    if (items.empty()) {
+        cout << "\nNo item is found.\n";
+    } else {
+        cout << "\n ---- Item List ---- \n";
+        for (const auto& item : items) {
+            item.displayProducts();
+        }
+    }
 }
