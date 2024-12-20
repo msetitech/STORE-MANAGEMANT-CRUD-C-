@@ -9,14 +9,15 @@ struct Item {
     float price;
     int id;
 
-    // display function
-
-    void displayProducts(){
+    // Display function
+    void displayProducts() {
         cout << "\n---- ITEM MANAGEMENT SYSTEM ----\n";
-        cout << "Product ID: " << id << ", Product Name: " << name << ", Product Price: $" << price <<endl;
+        cout << "Product ID: " << id 
+             << ", Product Name: " << name 
+             << ", Product Price: $" << price << endl;
     }
-
 };
+
 
 void createItem(vector<Item>& items);
 void readItem(const vector<Item>& items);
@@ -53,9 +54,10 @@ int main(){
             break;
         case 5:
             cout << "Exiting ........" << endl;
+            break;
         default:
             cout << "Invalid Choice Try again (enter 1 - 5):";
-            break;
+            
         }
 
     } while (choice != 5);
@@ -73,7 +75,7 @@ void createItem(vector<Item>& items){
     cin >> newItem.price;
 
     items.push_back(newItem);
-    cout << "item Created Successfully";
+    cout << "item Created Successfully. \n";
 }
 
 void readItem(const vector<Item>& items) {
@@ -85,4 +87,28 @@ void readItem(const vector<Item>& items) {
             item.displayProducts();
         }
     }
+}
+
+void updateItem(vector<Item>& items){
+    if(items.empty()){
+        cout << "\nNo Item to Update\n";
+        return;
+    }
+    int id;
+    cout << "Enter Product ID to Update";
+    cin >> id;
+
+    for(auto& item : items){
+        if(item.id == id){
+            cin.ignore();
+            cout << "Enter New Name: ";
+            getline(cin, item.name);
+            cout << "Enter New Price: ";
+            cin >> item.price;
+
+            cout << "Item Updated Successfull ";
+            return;
+        }
+    }
+    cout << "item with ID "<< id << "Not found";
 }
