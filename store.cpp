@@ -10,7 +10,7 @@ struct Item {
     int id;
 
     // Display function
-    void displayProducts() {
+    void displayProducts() const{
         cout << "\n---- ITEM MANAGEMENT SYSTEM ----\n";
         cout << "Product ID: " << id 
              << ", Product Name: " << name 
@@ -83,7 +83,7 @@ void readItem(const vector<Item>& items) {
         cout << "\nNo item is found.\n";
     } else {
         cout << "\n ---- Item List ---- \n";
-        for (const auto& item : items) {
+        for (auto& item : items) {
             item.displayProducts();
         }
     }
