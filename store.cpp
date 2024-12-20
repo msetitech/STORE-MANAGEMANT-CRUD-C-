@@ -112,3 +112,20 @@ void updateItem(vector<Item>& items){
     }
     cout << "item with ID "<< id << "Not found";
 }
+
+// Delete an existing item
+void deleteItem(vector<Item>& items) {
+    int id;  // Variable to hold the ID of the item to delete
+    cout << "\nEnter Item ID to delete: ";
+    cin >> id;  // Input the item ID
+
+    for (auto it = items.begin(); it != items.end(); ++it) {  // Iterate through the vector
+        if (it->id == id) {  // Check if the current item matches the ID
+            items.erase(it);  // Remove the item from the vector
+            cout << "Item deleted successfully!\n";  // Confirmation message
+            return;  // Exit the function after deleting
+        }
+    }
+
+    cout << "Item with ID " << id << " not found.\n";  // Message if ID not found
+}
